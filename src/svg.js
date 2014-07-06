@@ -104,7 +104,9 @@ exports.createProcessor = function (base_path) {
     style.rules.forEach(function (rule) {
       if (rule.declarations) {
         rule.declarations.forEach(function (declaration) {
-          if (declaration.property === 'background-image') {
+          if (declaration.property === 'background-image' ||
+            declaration.property === 'background') {
+
             declaration.value = declaration.value.replace(SVG_PATTERN,
                 function (match, pre_whitespace, url_match, svg_style_json) {
               var url = url_match.replace(/^["']|["']$/g, '');
